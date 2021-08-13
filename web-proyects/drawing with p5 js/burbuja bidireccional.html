@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="libraries/p5.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        let height=240;
+        let width=430;
+        let foo=[];
+
+        let izq=0;
+        let j=0;
+        let s=0;
+        let auxA=0;
+        let aux=0;
+        let chequeo=0;
+
+        let a=0;
+        let b=0;
+
+        let cantElem=110;
+        let anchoElem=(width/cantElem);
+
+        for  (i = 0; i <cantElem; i++) {
+            foo.push(Math.floor(Math.random()*height));
+        }
+
+        //animacion corregida
+        function dibujarArray(arr,ancho){
+
+            stroke(240);
+            strokeCap(SQUARE);
+            strokeWeight(ancho);
+            background(0);
+            //se dibujan las lineas
+            for (i = 0; i < cantElem; i++) {
+                line(i*ancho+ancho/2,height/2,i*ancho+ancho/2,-arr[i]+height/2);
+            }
+        }
+
+        let der=foo.length;
+        s=der-1;
+
+        function setup() {
+            createCanvas(width, height);
+            frameRate(60);
+            background(0);
+        }
+
+        function draw() {
+            translate(0,height/2);
+            if(izq<=der){
+                if(chequeo==0){
+                    dibujarArray(foo,anchoElem);
+
+                    //ahora mismo esta en orden creciente
+                    a=foo[j];
+                    b=foo[j+1];
+                    if(a>b){
+                        foo[j]=b;
+                        foo[j+1]=a;
+                    }
+
+                    if(j>=der-1){
+                        j=izq;
+                        der--;
+                        chequeo=1;}
+                    j++;
+                }
+                if(chequeo==1){
+                    dibujarArray(foo,anchoElem);
+
+                    a=foo[s];
+                    b=foo[s+1];
+                    if(a>b){
+                        foo[s]=b;
+                        foo[s+1]=a;}
+
+                    if(s<=izq){
+                        s=der-1;
+                        izq++;
+                        chequeo=0;}
+                    //ahora mismo esta en orden decreciente
+
+                    s--;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

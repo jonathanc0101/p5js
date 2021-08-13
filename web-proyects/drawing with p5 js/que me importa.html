@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Que me importa</title>
+</head>
+<body>
+    <script>
+        function Imprime_x_veces(x, msg) {
+            while (x > 0) {
+                document.write(msg+"<br>");
+                x--;
+            }
+        }
+        function Imprime_x_veces_for(x, msg) {
+            for (i = 0; i < x;i++)
+            {
+                document.write(msg+"								");
+            }
+            document.write("sinco");
+        }
+        function analyzeRad(myRad) {
+            if (myRad == "On") {
+                Imprime_x_veces_for(20000, prompt("¿Que carajo me haces click? decime, decime dale"));
+
+            }
+
+        }
+    </script>
+    <label>
+        <input type="radio" name="fav_color1" value="On" onclick="analyzeRad(this.value);">que me importa
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="libraries/p5.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+
+        let xPos = -200;
+        let yPos = 0;
+        let height = 1000;
+        let width = 400;
+        let aux = 0;
+        let res = 0;
+
+        function setup() {
+            createCanvas(width, height);
+            frameRate(600);
+            background(200);
+        }
+
+        function draw() {
+            translate(width / 2, height / 2);
+            xPos = xPos + 0.1;
+            if (xPos > (width / 2)) {
+                xPos = 0-(width/2);
+                aux += 40;
+            }
+
+                //here goes the function to draw
+
+            stroke('red'); // Change the color
+
+            strokeWeight(5); // Make the points 5 pixels in size
+            res = (xPos) * (xPos)/50;
+            point(xPos, aux+res);
+        }
+
+    </script>
+
+</body>
+</html>

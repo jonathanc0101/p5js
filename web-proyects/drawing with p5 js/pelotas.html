@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="libraries/p5.js"></script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        let foo = 0;
+        let bar = 40;
+
+        function setup() {
+            createCanvas(3500, 2000);
+            frameRate(60);
+            background(255, 255, 255);
+            colorMode(HSB);
+        }
+
+        function draw() {
+            translate(1250, 1250);
+            foo = mouseX - mouseY;
+            if (foo < 0) {
+                foo = foo * (-1);
+            }
+            if (bar > 255) {
+                bar = 0;
+            }
+            fill(bar,100,100);
+            circle(mouseX-1250, mouseY-1250, foo);
+            bar = bar + 1;
+            //stroke(bar);
+        }
+    </script>
+
+</body>
+</html>

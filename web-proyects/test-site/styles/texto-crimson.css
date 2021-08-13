@@ -1,0 +1,8 @@
+﻿ p#taxt{
+    color: red;
+    width: 500px;
+    border: 10px inset black;
+}
+p:hover #linkFb{
+    color: aquamarine;
+}
