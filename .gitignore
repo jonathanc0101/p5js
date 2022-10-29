@@ -1,2 +1,4 @@
 libraries
 lib*
+/libraries
+/*/libraries
