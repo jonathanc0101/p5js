@@ -1,4 +1,1 @@
-libraries
-lib*
-/libraries
-/*/libraries
+libraries/
