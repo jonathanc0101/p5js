@@ -3,32 +3,54 @@ const ratio = 10;
 const numPtsIntegral = numPts / ratio;
 
 
-let currentAmountX = 1;
+let currentAmountX = 20;
+let currentBackgroundX = 1;
 
 function miFun(i) {
     return cos(i / 50) * 100 + floor(height / 6);
 }
 
 function easeFunction(i){
-    return i*i;
+    return i*i/20;
 }
 
 function setup() {
     createCanvas(1000, 500);
-
-    // slider = createSlider(0, 255, 100);
-    // slider.position(10, 10);
-    // slider.style('width', '80px');
 }
 
 function draw() {
-    background(color("#6160ff"));
-    drawLines();
-
-    // let val = slider.value();
 
     currentAmountX += 0.1;
+    currentBackgroundX += 5;
+    drawBackground((180+currentAmountX/2));
+    drawLines();
     drawRectangles(easeFunction(currentAmountX));
+}
+
+function drawBackground(value){
+    colorMode(HSB, 360, 100, 100);
+    
+    noStroke();
+    let px = 0;
+    let py = miFun(0);
+    const deltaX = 1;
+    
+    for (let i = 0; i < width; i++) {
+        let x = i * deltaX;
+        let y = miFun(i);   
+
+        let lightness = map(cos(i+value)/50,0,1,80,92);
+        let hue = map((i/10+value)%360,0,360,0,360);
+        fill(hue,80,lightness);
+        rect(x, 0, 1, 1000);
+
+        //store the last position
+        px = x;
+        py = y;
+    }
+
+    colorMode(RGB);
+    fill(230,230,230);
 }
 
 function drawLines() {
